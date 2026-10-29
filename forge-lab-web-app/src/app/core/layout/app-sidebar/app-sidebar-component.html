@@ -1,17 +1,32 @@
 <aside
-    class="flex flex-col h-14 bg-sidebar border-r border-sidebar-border transition-all duration-200 ease-in-out shrink-0 overflow-hidden fixed inset-y-0 left-0 z-50 md:relative md:z-auto -translate-x-full md:translate-x-0" [ngClass]="{ ' w-[260px]': isSidebarOpen(), ' w-[60px]': !isSidebarOpen() }">
-    <div class="flex items-center justify-between px-3 py-4 border-b border-sidebar-border">
-        <div class="flex items-center gap-2.5 min-w-0">
-            <img src="assets/logo.jpeg" alt="Logo" class="w-6 h-6">
-            <div class="min-w-0">
+    class="fixed inset-y-0 left-0 z-50 flex h-18 shrink-0 -translate-x-full flex-col overflow-hidden border-r border-sidebar-border bg-sidebar transition-[width] duration-300 ease-in-out md:relative md:z-auto md:translate-x-0"
+    [ngClass]="{ 'w-[260px]': isSidebarOpen(), 'w-20': !isSidebarOpen() }">
+    <div
+        class="flex w-full shrink-0 items-center justify-between border-b border-sidebar-border px-2 py-4">
+        <div class="flex min-w-0 items-center gap-2.5">
+            <img src="assets/new-logo-cropped.svg" alt="Forge Lab" class="h-10 w-10 shrink-0">
+            <div
+                class="min-w-0 overflow-hidden whitespace-nowrap transition-[max-width,opacity] duration-300 ease-in-out"
+                [ngClass]="{
+                    'max-w-40 opacity-100': isSidebarOpen(),
+                    'max-w-0 opacity-0': !isSidebarOpen()
+                }">
                 <p class="font-semibold text-sidebar-foreground text-sm tracking-tight leading-tight">Forge Lab</p>
                 <p class="text-[10px] text-muted-foreground leading-tight">Knowledge System</p>
             </div>
         </div>
-        <div class="flex items-center gap-0.5">
+        <div class="ml-auto flex shrink-0 items-center">
             <button
-                class="hidden md:flex p-1.5 rounded-lg hover:bg-sidebar-accent text-muted-foreground hover:text-sidebar-foreground transition-colors" (click)="toggleSidebar()">
-                <img src="assets/sidebar-icon.svg" alt="Sidebar Toggle" class="w-3 h-3" [ngClass]="{ 'rotate-180': !isSidebarOpen() }">
+                type="button"
+                class="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground"
+                [attr.aria-label]="isSidebarOpen() ? 'Collapse sidebar' : 'Expand sidebar'"
+                [attr.aria-expanded]="isSidebarOpen()"
+                (click)="toggleSidebar()">
+                <img
+                    src="assets/sidebar-icon.svg"
+                    alt=""
+                    class="h-3 w-3 transition-transform duration-300 ease-in-out"
+                    [ngClass]="{ 'rotate-180': !isSidebarOpen() }">
             </button>
         </div>
     </div>
