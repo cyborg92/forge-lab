@@ -31,12 +31,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Verify Angular project files
+        run: |
+          test -f package.json || {
+            echo "::error::package.json not found"
+            exit 1
+          }
+
+          test -f package-lock.json || {
+            echo "::error::package-lock.json not found"
+            exit 1
+          }
+
+          test -f angular.json || {
+            echo "::error::angular.json not found"
+            exit 1
+          }
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: forge-lab-web-app/package-lock.json
 
       - name: Install dependencies
         run: npm ci
