@@ -1,7 +1,14 @@
 import { Component, computed, input, EventEmitter, Output } from '@angular/core';
 
 /** Visual styles supported by the shared button. */
-export type ButtonVariant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+export type ButtonVariant =
+  | 'default'
+  | 'destructive'
+  | 'outline'
+  | 'secondary'
+  | 'ghost'
+  | 'link'
+  | 'sidebar';
 
 /** Preset button dimensions supported by the shared button. */
 export type ButtonSize = 'default' | 'sm' | 'lg' | 'icon';
@@ -20,6 +27,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
   ghost: 'hover:bg-accent hover:text-accent-foreground',
   link: 'text-primary underline-offset-4 hover:underline',
+  sidebar: 'text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-foreground',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -48,6 +56,7 @@ export class AppButton {
   readonly disabled = input(false);
   readonly className = input('');
   readonly ariaLabel = input<string | null>(null, { alias: 'aria-label' });
+  readonly ariaExpanded = input<boolean | null>(null, { alias: 'aria-expanded' });
 
   /**
    * Derived signal: Angular tracks the input signals read here and recalculates

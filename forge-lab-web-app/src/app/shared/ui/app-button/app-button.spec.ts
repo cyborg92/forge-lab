@@ -51,12 +51,24 @@ describe('AppButton', () => {
   it('should apply additional classes and an accessible label', () => {
     fixture.componentRef.setInput('className', 'w-full');
     fixture.componentRef.setInput('aria-label', 'Save changes');
+    fixture.componentRef.setInput('aria-expanded', true);
     fixture.detectChanges();
 
     const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
 
     expect(button.classList).toContain('w-full');
     expect(button.getAttribute('aria-label')).toBe('Save changes');
+    expect(button.getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('should apply the sidebar variant', () => {
+    fixture.componentRef.setInput('variant', 'sidebar');
+    fixture.detectChanges();
+
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+
+    expect(button.classList).toContain('hover:bg-sidebar-accent');
+    expect(button.classList).toContain('hover:text-sidebar-foreground');
   });
 
   it('should emit the native click event', () => {

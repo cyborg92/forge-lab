@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { AppShellComponent } from './core/layout/app-shell/app-shell-component';
-import { ThemeService } from './shared/utils/services/theme.service';
+import { AppShellComponent } from '@core/layout/app-shell/app-shell-component';
+import { ThemeService } from '@shared/utils/services/theme.service';
 
 @Component({
   selector: 'app-root',

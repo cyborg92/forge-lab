@@ -16,18 +16,18 @@
             </div>
         </div>
         <div class="ml-auto flex shrink-0 items-center">
-            <button
-                type="button"
-                class="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground"
-                [attr.aria-label]="isSidebarOpen() ? 'Collapse sidebar' : 'Expand sidebar'"
-                [attr.aria-expanded]="isSidebarOpen()"
-                (click)="toggleSidebar()">
+            <app-button
+                variant="sidebar"
+                size="icon"
+                [aria-label]="isSidebarOpen() ? 'Collapse sidebar' : 'Expand sidebar'"
+                [aria-expanded]="isSidebarOpen()"
+                (clicked)="toggleSidebar()">
                 <img
                     src="assets/sidebar-icon.svg"
                     alt=""
                     class="h-3 w-3 transition-transform duration-300 ease-in-out"
                     [ngClass]="{ 'rotate-180': !isSidebarOpen() }">
-            </button>
+            </app-button>
         </div>
     </div>
 </aside>

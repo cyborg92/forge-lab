@@ -1,9 +1,10 @@
 import { NgClass } from '@angular/common';
-import { Component,signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { AppButton } from '@shared/ui/app-button/app-button';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [NgClass],
+  imports: [NgClass, AppButton],
   templateUrl: './app-sidebar-component.html',
   styleUrl: './app-sidebar-component.css',
 })

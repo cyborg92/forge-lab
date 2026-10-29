@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ThemeService } from '../../../shared/utils/services/theme.service';
+import { ThemeService } from '@shared/utils/services/theme.service';
 
 @Component({
   selector: 'app-navbar',
