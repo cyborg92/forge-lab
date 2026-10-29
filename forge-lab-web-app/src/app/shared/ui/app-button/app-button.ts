@@ -1,11 +1,16 @@
-import { Component, computed, input,EventEmitter } from '@angular/core';
+import { Component, computed, input, EventEmitter, Output } from '@angular/core';
 
+/** Visual styles supported by the shared button. */
 export type ButtonVariant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+
+/** Preset button dimensions supported by the shared button. */
 export type ButtonSize = 'default' | 'sm' | 'lg' | 'icon';
 
+// Shared Tailwind utilities; variant and size classes are added below.
 const baseClasses =
   'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*="size-"])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive';
 
+// Keep complete Tailwind class names here so Tailwind can detect and generate them.
 const variantClasses: Record<ButtonVariant, string> = {
   default: 'bg-primary text-primary-foreground hover:bg-primary/90',
   destructive:
@@ -30,7 +35,13 @@ const sizeClasses: Record<ButtonSize, string> = {
   templateUrl: './app-button.html',
   styleUrl: './app-button.css',
 })
+/**
+ * Reusable native button with Tailwind variants, sizes, and content projection.
+ *
+ * Example: `<app-button variant="outline" size="sm" (clicked)="save($event)">Save</app-button>`.
+ */
 export class AppButton {
+  /** Signal inputs let the parent configure the button; each input has a default. */
   readonly variant = input<ButtonVariant>('default');
   readonly size = input<ButtonSize>('default');
   readonly type = input<'button' | 'submit' | 'reset'>('button');
@@ -38,8 +49,23 @@ export class AppButton {
   readonly className = input('');
   readonly ariaLabel = input<string | null>(null, { alias: 'aria-label' });
 
+  /**
+   * Derived signal: Angular tracks the input signals read here and recalculates
+   * the class string only when one of them changes.
+   */
   readonly buttonClasses = computed(
     () =>
       `${baseClasses} ${variantClasses[this.variant()]} ${sizeClasses[this.size()]} ${this.className()}`,
   );
+
+  /** Emits the native click event so the parent can handle the action. */
+  @Output() readonly clicked = new EventEmitter<MouseEvent>();
+
+  /**
+   * Forwards the native click event through the component output.
+   * @param event Native click event from the button element.
+   */
+  click(event: MouseEvent): void {
+    this.clicked.emit(event);
+  }
 }

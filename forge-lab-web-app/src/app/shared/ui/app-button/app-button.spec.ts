@@ -58,4 +58,15 @@ describe('AppButton', () => {
     expect(button.classList).toContain('w-full');
     expect(button.getAttribute('aria-label')).toBe('Save changes');
   });
+
+  it('should emit the native click event', () => {
+    const clickListener = vi.fn();
+    component.clicked.subscribe(clickListener);
+
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    button.click();
+
+    expect(clickListener).toHaveBeenCalledOnce();
+    expect(clickListener.mock.calls[0][0]).toBeInstanceOf(MouseEvent);
+  });
 });

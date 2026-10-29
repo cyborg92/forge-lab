@@ -3,6 +3,7 @@
   [type]="type()"
   [disabled]="disabled()"
   [attr.aria-label]="ariaLabel()"
-  [class]="buttonClasses()">
+  [class]="buttonClasses()"
+  (click)="click($event)">
   <ng-content></ng-content>
 </button>
