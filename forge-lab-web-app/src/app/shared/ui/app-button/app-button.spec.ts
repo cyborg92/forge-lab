@@ -6,6 +6,15 @@ describe('AppButton', () => {
   let component: AppButton;
   let fixture: ComponentFixture<AppButton>;
 
+  function getButton(): HTMLButtonElement {
+    const button = (fixture.nativeElement as HTMLElement).querySelector('button');
+    if (!(button instanceof HTMLButtonElement)) {
+      throw new Error('Expected the AppButton template to render a button element.');
+    }
+
+    return button;
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppButton],
@@ -21,7 +30,7 @@ describe('AppButton', () => {
   });
 
   it('should render the default variant and size', () => {
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    const button = getButton();
 
     expect(button.classList).toContain('bg-primary');
     expect(button.classList).toContain('h-9');
@@ -33,7 +42,7 @@ describe('AppButton', () => {
     fixture.componentRef.setInput('size', 'sm');
     fixture.detectChanges();
 
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    const button = getButton();
 
     expect(button.classList).toContain('border-border');
     expect(button.classList).toContain('h-8');
@@ -43,7 +52,7 @@ describe('AppButton', () => {
     fixture.componentRef.setInput('disabled', true);
     fixture.detectChanges();
 
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    const button = getButton();
 
     expect(button.disabled).toBe(true);
   });
@@ -54,7 +63,7 @@ describe('AppButton', () => {
     fixture.componentRef.setInput('aria-expanded', true);
     fixture.detectChanges();
 
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    const button = getButton();
 
     expect(button.classList).toContain('w-full');
     expect(button.getAttribute('aria-label')).toBe('Save changes');
@@ -65,7 +74,7 @@ describe('AppButton', () => {
     fixture.componentRef.setInput('variant', 'sidebar');
     fixture.detectChanges();
 
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    const button = getButton();
 
     expect(button.classList).toContain('hover:bg-sidebar-accent');
     expect(button.classList).toContain('hover:text-sidebar-foreground');
@@ -75,7 +84,7 @@ describe('AppButton', () => {
     const clickListener = vi.fn();
     component.clicked.subscribe(clickListener);
 
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    const button = getButton();
     button.click();
 
     expect(clickListener).toHaveBeenCalledOnce();

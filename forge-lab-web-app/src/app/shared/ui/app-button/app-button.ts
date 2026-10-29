@@ -2,13 +2,7 @@ import { Component, computed, input, EventEmitter, Output } from '@angular/core'
 
 /** Visual styles supported by the shared button. */
 export type ButtonVariant =
-  | 'default'
-  | 'destructive'
-  | 'outline'
-  | 'secondary'
-  | 'ghost'
-  | 'link'
-  | 'sidebar';
+  'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'sidebar';
 
 /** Preset button dimensions supported by the shared button. */
 export type ButtonSize = 'default' | 'sm' | 'lg' | 'icon';
