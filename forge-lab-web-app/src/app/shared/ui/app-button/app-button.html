@@ -1,0 +1,11 @@
+<button
+  data-slot="button"
+  [type]="type()"
+  [disabled]="disabled()"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-expanded]="ariaExpanded()"
+  [class]="buttonClasses()"
+  (click)="click($event)"
+>
+  <ng-content></ng-content>
+</button>

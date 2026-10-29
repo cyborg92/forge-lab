@@ -1,0 +1,113 @@
+<header
+  class="w-full flex items-center justify-between px-4 h-18 border-b border-border bg-background/95 backdrop-blur-md shrink-0 gap-3"
+>
+  <div class="flex items-center gap-3 min-w-0">
+    <p class="text-sm font-medium text-foreground truncate max-w-[160px] sm:max-w-xs">
+      Distributed systems &amp; CAP theorem
+    </p>
+    <div class="hidden sm:flex items-center gap-1 text-[10px] text-primary/80">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span
+      ><span class="font-mono">Online</span>
+    </div>
+  </div>
+  <div class="flex items-center gap-1.5">
+    <button
+      class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all bg-accent text-accent-foreground border-primary/30"
+    >
+      <span>RAG</span>
+      <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+    </button>
+    <div class="relative hidden sm:block">
+      <button
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-muted/60 hover:bg-muted text-foreground transition-colors border border-border"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="11"
+          height="11"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-cpu text-primary"
+        >
+          <rect width="16" height="16" x="4" y="4" rx="2"></rect>
+          <rect width="6" height="6" x="9" y="9" rx="1"></rect>
+          <path d="M15 2v2"></path>
+          <path d="M15 20v2"></path>
+          <path d="M2 15h2"></path>
+          <path d="M2 9h2"></path>
+          <path d="M20 15h2"></path>
+          <path d="M20 9h2"></path>
+          <path d="M9 2v2"></path>
+          <path d="M9 20v2"></path></svg
+        ><span class="font-mono max-w-[100px] truncate">llama3.1:8b</span
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="10"
+          height="10"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-down text-muted-foreground"
+        >
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+    </div>
+    <button
+      type="button"
+      class="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+      [attr.aria-label]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+      [attr.aria-pressed]="theme.isDark()"
+      (click)="theme.toggle()"
+    >
+      <svg
+        aria-hidden="true"
+        class="w-4 h-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+    </button>
+    <div class="relative">
+      <button
+        class="w-8 h-8 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center text-primary hover:bg-primary/25 transition-colors"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-user"
+        >
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
