@@ -1,0 +1,76 @@
+<aside
+  class="fixed inset-y-0 left-0 z-50 flex h-full shrink-0 -translate-x-full flex-col overflow-hidden border-r border-sidebar-border bg-sidebar transition-[width] duration-300 ease-in-out md:relative md:z-auto md:translate-x-0"
+  [ngClass]="{ 'w-[260px]': isSidebarOpen(), 'w-24': !isSidebarOpen() }"
+>
+  <div
+    class="flex w-full shrink-0 items-center justify-between border-b border-sidebar-border px-2 py-4"
+  >
+    <div
+      class="flex min-w-0 items-center gap-0 transition-[gap] duration-300 ease-in-out"
+      [ngClass]="{ 'gap-2.5': isSidebarOpen() }"
+    >
+      <img src="assets/new-logo-cropped.svg" alt="Forge Lab" class="h-10 w-10 shrink-0" />
+      <div
+        class="w-0 shrink-0 overflow-hidden whitespace-nowrap opacity-0 transition-[width,opacity] duration-300 ease-in-out"
+        [ngClass]="{
+          'w-40 opacity-100': isSidebarOpen(),
+        }"
+      >
+        <p class="font-semibold text-sidebar-foreground text-sm tracking-tight leading-tight">
+          Forge Lab
+        </p>
+        <p class="text-[10px] text-muted-foreground leading-tight">Knowledge System</p>
+      </div>
+    </div>
+    <div class="ml-auto flex shrink-0 items-center">
+      <app-button
+        variant="sidebar"
+        size="icon"
+        [aria-label]="isSidebarOpen() ? 'Collapse sidebar' : 'Expand sidebar'"
+        [aria-expanded]="isSidebarOpen()"
+        (clicked)="toggleSidebar()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-left transition-transform duration-200"
+          [ngClass]="{ 'rotate-180': !isSidebarOpen() }"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+      </app-button>
+    </div>
+  </div>
+  <div class="px-2.5 pt-3 pb-1">
+    <app-button
+      variant="default"
+      size="lg"
+      className="w-full justify-start rounded-xl gap-2.5"
+      [aria-label]="'New chat'"
+      (clicked)="newChat()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-plus"
+      >
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path></svg
+      >New Chat
+    </app-button>
+  </div>
+</aside>
