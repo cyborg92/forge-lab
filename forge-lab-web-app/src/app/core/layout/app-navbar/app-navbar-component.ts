@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ThemeService } from '@shared/utils/services/theme.service';
+import { UtilsService } from '@shared/utils/services/utils.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +8,9 @@ import { ThemeService } from '@shared/utils/services/theme.service';
   styleUrl: './app-navbar-component.css',
 })
 export class AppNavbarComponent {
-  readonly theme = inject(ThemeService);
+  readonly utilsService = inject(UtilsService);
 
   toggleTheme(): void {
-    this.theme.toggle();
+    this.utilsService.toggle();
   }
 }

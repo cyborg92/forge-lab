@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { AppShellComponent } from '@core/layout/app-shell/app-shell-component';
-import { ThemeService } from '@shared/utils/services/theme.service';
+import { UtilsService } from '@shared/utils/services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +10,5 @@ import { ThemeService } from '@shared/utils/services/theme.service';
 })
 export class App {
   protected readonly title = signal('forge-lab-web-app');
-  protected readonly theme = inject(ThemeService);
+  protected readonly utilsService = inject(UtilsService);
 }

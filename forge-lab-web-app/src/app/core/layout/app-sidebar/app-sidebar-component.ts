@@ -14,4 +14,8 @@ export class AppSidebarComponent {
   toggleSidebar(): void {
     this.isSidebarOpen.update((isOpen) => !isOpen);
   }
+  
+  newChat(): void {
+    console.log('New chat clicked');
+  }
 }
